@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../../Desktop/web/boostrap"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "boostrap"
+	}
+}

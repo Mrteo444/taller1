@@ -6,6 +6,8 @@ import LoginScrenn from '../screen/LoginScrenn';
 import MenuScreen from '../screen/MenuScreen';
 import JuegoScreen from '../screen/JuegoScreen';
 import RegisterScreen from '../screen/RegisterScreen';
+import Game from '../src/Components/Game';
+import Board from '../src1/components/Board';
 
 
 
@@ -19,8 +21,10 @@ function MyTabs() {
     <Tab.Navigator>
       
       
-      <Tab.Screen name="menu" component={MenuScreen} />
+      {/* <Tab.Screen name="menu" component={MenuScreen} /> */}
       <Tab.Screen name="Juego" component={JuegoScreen} />
+      <Tab.Screen name="Game" component={Game} />
+      <Tab.Screen name="Minas" component={Board} />
       
     </Tab.Navigator>
   );
