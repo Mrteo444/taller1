@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { NavigationContainer } from "@react-navigation/native";
 import LoginScrenn from '../screen/LoginScrenn';
-import MenuScreen from '../screen/MenuScreen';
+
 import JuegoScreen from '../screen/JuegoScreen';
 import RegisterScreen from '../screen/RegisterScreen';
 import Game from '../src/Components/Game';
@@ -35,7 +35,7 @@ function MyStack() {
       
       <Stack.Navigator initialRouteName='Register'> 
         <Stack.Screen name="Tabs" component={MyTabs} />
-        {/*<Stack.Screen name="Login" component={LoginScrenn} />*/}
+        
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Login" component={LoginScrenn} />
         
