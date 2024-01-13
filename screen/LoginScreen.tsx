@@ -16,7 +16,7 @@ export default function LoginScreen({ navigation }: any) {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        navigation.navigate("Tabs")
+        navigation.navigate("Inicio")
         // ...
       })
       .catch((error) => {
@@ -27,13 +27,13 @@ export default function LoginScreen({ navigation }: any) {
 
         switch (errorCode) {
           case "auth/invalid-credential":
-            Alert.alert("Error", "Correo incorrecto");
+            Alert.alert("Error", "Correo o contraseña incorrecta");
             break;
           case "auth/wrong-password":
             Alert.alert("Error", "Contraseña incorrecta");
             break;
           default:
-            Alert.alert("ERROR");
+            Alert.alert("Error","Complete los espacios");
         }
       });
   }

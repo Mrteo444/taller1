@@ -2,7 +2,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { NavigationContainer } from "@react-navigation/native";
-import LoginScrenn from '../screen/LoginScrenn';
+import LoginScreen from '../screen/LoginScreen';
 
 import JuegoScreen from '../screen/JuegoScreen';
 import RegisterScreen from '../screen/RegisterScreen';
@@ -19,19 +19,19 @@ function MyTabs() {
     <Tab.Navigator>
       
       {/* <Tab.Screen name="menu" component={MenuScreen} /> */}
-      <Tab.Screen name="Juego" component={JuegoScreen} />
-      <Tab.Screen name="Game" component={Game} />
-      <Tab.Screen name="Minas" component={Board} />
+      <Tab.Screen name="Subir imagen" component={JuegoScreen} />
+      <Tab.Screen name="Juego: Serpiente" component={Game} />
+      <Tab.Screen name="Juego: Buscaminas" component={Board} />
     </Tab.Navigator>
   );
 }
 
 function MyStack() {
     return (
-      <Stack.Navigator initialRouteName='Register'> 
-        <Stack.Screen name="Tabs" component={MyTabs} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Login" component={LoginScrenn} />
+      <Stack.Navigator initialRouteName='Regístrate'> 
+        <Stack.Screen name="Inicio" component={MyTabs} />
+        <Stack.Screen name="Regístrate" component={RegisterScreen} />
+        <Stack.Screen name="Ingreso" component={LoginScreen} />
         <Stack.Screen name='Perfil' component={PerfilScreen}/>
       </Stack.Navigator>
     );

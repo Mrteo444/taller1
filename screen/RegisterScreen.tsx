@@ -140,12 +140,12 @@ const RegisterScreen = ({ navigation }: any) => {
 
       <TextInput
         style={[styles.input, { color: 'black' }]}
-        placeholder="Nombres"
+        placeholder="Nombre"
         onChangeText={(texto) => (texto)}
       />
       <TextInput
         style={[styles.input, { color: 'black' }]}
-        placeholder="Apellidos"
+        placeholder="Apellido"
         onChangeText={(texto) => (texto)}
       />
       <TextInput
@@ -155,7 +155,7 @@ const RegisterScreen = ({ navigation }: any) => {
       />
       <TextInput
         style={[styles.input, { color: 'black' }]}
-        placeholder="Ingrese ID"
+        placeholder="Correo electrónico"
         onChangeText={(texto) => setcorreo(texto)}
       />
       <TextInput
@@ -163,7 +163,6 @@ const RegisterScreen = ({ navigation }: any) => {
         placeholder="Contraseña"
         onChangeText={(texto) => setcontrasenia(texto)}
       />
-<<<<<<< HEAD
       <Text style={{ color: 'white' }}>SUBIR FOTO DE PERFIL </Text>
       <TouchableOpacity style={styles.but2} onPress={() => pickImage()}>
         <Text style={{ color: 'white' }}>Abrir almacenamiento</Text>
@@ -173,50 +172,20 @@ const RegisterScreen = ({ navigation }: any) => {
         <Text style={{ color: 'white' }}>Guardar Imagen</Text>
       </TouchableOpacity>
 
-      <Text style={{ color: 'white' }}>SUBIR IMAGEN DESDE LA CAMARA</Text>
+      <Text style={{ color: 'white' }}>SUBIR IMAGEN DESDE LA CÁMARA</Text>
       <TouchableOpacity style={styles.but2} onPress={() => seleccionarImagen()}>
-        <Text style={{ color: 'white' }}>Abrir camara</Text>
+        <Text style={{ color: 'white' }}>Abrir cámara</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.but2} onPress={() => subirImagenC('avatar2')}>
         <Text style={{ color: 'white' }}>Subir imagen</Text>
-=======
-
-      <Text>SUBIR FOTO DE PERFIL </Text>
-      
-      <TouchableOpacity style={styles.but2} onPress={() => pickImage()}>
-        <Text style={{ color: 'white' }}>Abrir almacenamiento</Text>
-      </TouchableOpacity>
-      {/* <Image source={{ uri: imagen }} style={styles.img} /> */}
-      <TouchableOpacity style={styles.but2} onPress={() => subirImagen('avatar1')}>
-        <Text style={{ color: 'white' }}>Gaurdar Imagen</Text>
-      </TouchableOpacity>
-
-      {/* ///////////////////////CAMARA ///////////////////////// */}
-      <Text>SUBIR IMAGEN DESDE LA CAMARA</Text>
-      <TouchableOpacity style={styles.but2} onPress={() => seleccionarImagen()}>
-        <Text style={{ color: 'white' }}>Open camara</Text>
-      </TouchableOpacity>
-
-      {/* <Image source ={{ uri: imagen}} style={styles.img}/> */}
-
-      <TouchableOpacity style={styles.but2} onPress={() => subirImagenC('avatar2')}>
-        <Text style={{ color: 'white' }}>SUBIR IMAGEN A FIREBASE</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.but} onPress={() => registro()}>
-        <Text style={{ color: 'white' }}>Registar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.but1} onPress={() => navigation.navigate('Login')}>
-        <Text style={{ color: 'white' }}>Inicio de sesion</Text>
->>>>>>> 0ca8a1ed79c1ffc8cf34129b446ae91a5c4f3926
       </TouchableOpacity>
 
       <TouchableOpacity style={[styles.but, { color: 'white' }]} onPress={() => registro()}>
         <Text style={{ color: 'white' }}>Registrarse</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[styles.but1, { color: 'white' }]} onPress={() => navigation.navigate('Login')}>
-        <Text style={{ color: 'white' }}>Iniciar sesion</Text>
+      <TouchableOpacity style={[styles.but1, { color: 'white' }]} onPress={() => navigation.navigate('Ingreso')}>
+        <Text style={{ color: 'white' }}>Iniciar sesión</Text>
       </TouchableOpacity>
     </ImageBackground>
   )

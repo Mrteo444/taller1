@@ -55,12 +55,12 @@ export default function JuegoScreen() {
       style={styles.container}
     >
 
-      <Text style={{color: 'white'}}>SUBIR IMAGEN DESDE LA CAMARA</Text>
+      <Text style={{color: 'white'}}>SUBE UNA IMAGEN DESDE LA CAMARA</Text>
       <Button title="abrir camara" onPress={() => seleccionarImagen()} />
       <Image source={{ uri: imagen }} style={styles.img} />
   
       <TouchableOpacity style={styles.btn} onPress={() => subirImagen('avatar2')}>
-        <Text >SUBIR IMAGEN A FIREBASE</Text>
+        <Text >Guardar la imagen en firebase</Text>
       </TouchableOpacity>
 
     </ImageBackground>
