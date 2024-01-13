@@ -147,75 +147,67 @@ const RegisterScreen = ({ navigation }: any) => {
 
   return (
     <ImageBackground
-      source={{ uri: 'https://i.pinimg.com/564x/86/f7/2f/86f72f87cbd7050cbad3816c0dfff54a.jpg' }}
+      source={{ uri: 'https://s0.smartresize.com/wallpaper/892/884/HD-wallpaper-minimal-blue-wallpappe-aurel-minimal-abstract-blue-dark-lines.jpg' }}
       style={styles.container}
     >
-      <Text style={styles.titulo}>Registrese</Text>
+      <Text style={[styles.titulo, { color: 'white' }]}>REGISTRO</Text>
+      <Image
+      source={{ uri: 'https://img.freepik.com/fotos-premium/personaje-dibujos-animados-auriculares-gafas-que-dice-soy-robot_784625-10668.jpg?w=360' }}
+      style={{ width: 100, height: 100, marginTop: 0 }}
+    />
 
       <TextInput
-        style={styles.input}
+        style={[styles.input, { color: 'black' }]}
         placeholder="Nombres"
         onChangeText={(texto) => (texto)}
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { color: 'black' }]}
         placeholder="Apellidos"
         onChangeText={(texto) => (texto)}
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { color: 'black' }]}
         placeholder="Edad"
         onChangeText={(texto) => (texto)}
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { color: 'black' }]}
         placeholder="Ingrese ID"
         onChangeText={(texto) => setcorreo(texto)}
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, { color: 'black' }]}
         placeholder="Contraseña"
         onChangeText={(texto) => setcontrasenia(texto)}
       />
-      <Text>SUBIR FOTO DE PERFIL </Text>
+      <Text style={{ color: 'white' }}>SUBIR FOTO DE PERFIL </Text>
       <TouchableOpacity style={styles.but2} onPress={() => pickImage()}>
         <Text style={{ color: 'white' }}>Abrir almacenamiento</Text>
       </TouchableOpacity>
-      {/* <Image source={{ uri: imagen }} style={styles.img} /> */}
-      <TouchableOpacity style={styles.but2} onPress={ () => subirImagen('avatar1')}>
-        <Text style={{ color: 'white' }}>Gaurdar Imagen</Text>
+
+      <TouchableOpacity style={styles.but2} onPress={() => subirImagen('avatar1')}>
+        <Text style={{ color: 'white' }}>Guardar Imagen</Text>
       </TouchableOpacity>
 
-      {/* ///////////////////////CAMARA ///////////////////////// */}
-      <Text>SUBIR IMAGEN DESDE LA CAMARA</Text>
-      <TouchableOpacity style={styles.but2} onPress={ ()=> seleccionarImagen()}>
-        <Text style={{ color: 'white' }}>Open camara</Text>
-      </TouchableOpacity>
-      
-      {/* <Image source ={{ uri: imagen}} style={styles.img}/> */}
-
-      <TouchableOpacity style={styles.but2}onPress={()=> subirImagenC('avatar2')}>
-        <Text style={{ color: 'white' }}>SUBIR IMAGEN A FIREBASE</Text>
+      <Text style={{ color: 'white' }}>SUBIR IMAGEN DESDE LA CAMARA</Text>
+      <TouchableOpacity style={styles.but2} onPress={() => seleccionarImagen()}>
+        <Text style={{ color: 'white' }}>Abrir camara</Text>
       </TouchableOpacity>
 
-      
-
-      
-
-      
-      
-
-
-      <TouchableOpacity style={styles.but} onPress={() => registro()}>
-        <Text style={{ color: 'white' }}>Registar</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.but1} onPress={() => navigation.navigate('Login')}>
-        <Text style={{ color: 'white' }}>Inicio de sesion</Text>
+      <TouchableOpacity style={styles.but2} onPress={() => subirImagenC('avatar2')}>
+        <Text style={{ color: 'white' }}>Subir imagen</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity style={[styles.but, { color: 'white' }]} onPress={() => registro()}>
+        <Text style={{ color: 'white' }}>Registrarse</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={[styles.but1, { color: 'white' }]} onPress={() => navigation.navigate('Login')}>
+        <Text style={{ color: 'white' }}>Iniciar sesion</Text>
+      </TouchableOpacity>
     </ImageBackground>
   )
-}
+  }
 
 const styles = StyleSheet.create({
   container: {
@@ -228,32 +220,37 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
-    borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 5,
-    padding: 10,
+
+    height: 40,
+    borderColor: 'white', // Cambiamos el color del borde
+    borderWidth: 2,
+    borderRadius: 20,
     marginBottom: 10,
-    width: '100%',
+    padding: 8,
+    width: '80%',
+    backgroundColor: 'white',
+    color: 'black', // Cambiamos el color del texto */
   },
   but: {
     backgroundColor: 'blue',
     padding: 10,
     borderRadius: 5,
-    width: '80%',
+    width: '24.5%',
     marginBottom: 10,
   },
   but2: {
-    backgroundColor: 'red',
+
+    backgroundColor: '#286F93',
     padding: 10,
     borderRadius: 5,
-    width: '80%',
+    width: '60%',
     marginBottom: 10,
   },
   but1: {
-    backgroundColor: 'green',
+    backgroundColor: '#0C5E65',
     padding: 10,
     borderRadius: 5,
-    width: '80%',
+    width: '28%',
   },
   img: {
     width: 400,

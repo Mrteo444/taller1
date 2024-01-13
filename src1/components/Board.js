@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import {gameReducer} from '../reducers/gameReducer';
-import {createBoard} from '../utils/createBoard';
+import { StyleSheet, View, Text, Button, ImageBackground } from 'react-native';
+import { gameReducer } from '../reducers/gameReducer';
+import { createBoard } from '../utils/createBoard';
 import Cell from './Cell';
 
 const BOARD_SIZE = 10;
@@ -15,13 +15,20 @@ export default function Board() {
   });
 
   function handlePress(row, col) {
-    dispatch({type: 'HANDLE_CELL', row, col});
+    dispatch({ type: 'HANDLE_CELL', row, col });
+  }
+
+  function handleRestart() {
+    dispatch({ type: 'RESTART_GAME' });
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        {gameState.isGameOver ? 'Game Over' : 'Minesweeper'}
+<ImageBackground
+      source={{ uri: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ0NCAgHCA0HBwcIDQ8IDQcNFREWFhURExMYHSggGCYlGxUVITEhMSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0PDysZFRkrKys3NysrKystNy0rNysrKy0rKzcrLTctKysrKysrKysrKy0rKysrKysrKysrKysrK//AABEIASwAqAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAABAAIEB//EABYQAQEBAAAAAAAAAAAAAAAAAAARAf/EABkBAQEBAQEBAAAAAAAAAAAAAAABAgQDBf/EABYRAQEBAAAAAAAAAAAAAAAAAAARAf/aAAwDAQACEQMRAD8A9XCTxfRSC0EEhUNQFQQopG6gKlUyimhAVJUAQqEU1BA7NB0NPBLUBVqQFQIAAjRpaENQQI0XEEhUCBQiEEkhXXqSbcwSQoSSKEgKtCAqBAo1JIBICpICrUkAIQrrSTTnQS0AkNFS1CioIaipIAgkKBSBUkhRqSQCSFdaqTbnqCAVJDUVaCAQQ0WpBCoICkIItIQBVVAVJIHWNVFbc9KGgCEKi0hAKggLTo1AWoLVuoVBAWkIC0oVUKkEFdYCbc9IQqLSKgFI0IWrRqAUhMi0rQKLSgAp0KgWlAIUoVEK6kKK256UKqLUqAFIoWi0iirSFVVG6EWkUIhUhVRaqqBSFKFVFpTNQV1Kihpz0qigWndVAoU1VmqkKaKFSLUhQFI0VC0gbqoU0aFQpoCRaUEFdKrNTbwrQoVCqoCi0oUUKaKKqhVUBoU0IC0jdCCkKgKaqKApQJCuhVmpp5UoUUKahRuhTVRQFNFFGhWqKKBaVQApCoClUUUKUAFaTNRCumqsqq860KFQqQooUoAKQqApAQUgVUKkKlKkEhUhUpSggroqoQxSFQFIqoqlNAqCrUFuhUFQFIQIUqgaJTVQApQQVJIK6EEIkgoQggQgqKoIKkEFVGoaFI1ChSENEpQQUoIK6EkCCQIJAgkCCFES1BRJAEkASQCpJCVIaha6akECKkoEkASGiKpAEkAQSVEkAQpAJJAkEFdOoFFQIBLUBENSBBJQAgEkBCEAVSAJJAkEDpISKkgCBCiBAIHQIEkCCQLQQIgQCSQBJKOlNJlplNAAI1BAZiaCjIbAjIbAMhoaARQjKaAMxNJRkNIR/9k=' }}
+      style={styles.container}
+    >
+      <Text style={styles.text }>
+        {gameState.isGameOver ? 'Acabas de perder' : 'Buscaminas'}
       </Text>
       {gameState.board.map((row, rowIdx) => (
         <View key={rowIdx} style={styles.row}>
@@ -30,7 +37,9 @@ export default function Board() {
           ))}
         </View>
       ))}
-    </View>
+      <Button title="Intentalo de nuevo
+      " onPress={handleRestart} />
+    </ImageBackground>
   );
 }
 
@@ -44,6 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
+    color:'black',
     fontWeight: '900',
     fontSize: 32,
   },

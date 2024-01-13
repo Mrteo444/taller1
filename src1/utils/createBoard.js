@@ -1,4 +1,4 @@
-import {createCell} from './createCell';
+import { createCell } from './createCell';
 
 export function createBoard(width, height, bombs) {
   const matrix = [];
@@ -23,8 +23,8 @@ function increaseNums(matrix) {
         const neighbors = getNeighbors(row, col, matrix);
 
         for (const neighbor of neighbors) {
-          const [row, col] = neighbor;
-          matrix[row][col].value += 1;
+          const [neighborRow, neighborCol] = neighbor;
+          matrix[neighborRow][neighborCol].value += 1;
         }
       }
     }

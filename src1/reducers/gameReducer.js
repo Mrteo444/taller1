@@ -1,4 +1,10 @@
 import {getNeighbors} from '../utils/createBoard';
+import { createBoard } from '../utils/createBoard';
+
+const BOARD_SIZE = 10;
+const BOMBS_NUM = 10;
+
+// Resto del código
 
 export function gameReducer(state, action) {
   const {type, row, col} = action;
@@ -23,9 +29,17 @@ export function gameReducer(state, action) {
           board: flipCell(row, col, state.board),
         };
       }
+    }case 'RESTART_GAME': {
+      return {
+        ...state,
+        board: createBoard(BOARD_SIZE, BOARD_SIZE, BOMBS_NUM),
+        isGameOver: false,
+        numOfOpenCells: 0,
+      };
     }
     default: {
       console.log('error, action unknown');
+      return state;
     }
   }
 }

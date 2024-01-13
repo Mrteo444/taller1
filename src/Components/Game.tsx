@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SafeAreaView, StyleSheet, View ,Text} from "react-native";
+import { SafeAreaView, StyleSheet, View, Alert } from "react-native";
 import { PanGestureHandler } from "react-native-gesture-handler";
 import { Colors } from "../styles/colors";
 import { Direction, Coordinate, GestureEventType } from "../types/types";
@@ -99,6 +99,20 @@ export default function Game(): JSX.Element {
   const pauseGame = () => {
     setIsPaused(!isPaused);
   };
+  const gameOverMessage = () => {
+    if (isGameOver) {
+      Alert.alert(
+        "Perdiste",
+        `Puntaje obtenido: ${score}`,
+        [{ text: "OK", onPress: () => console.log("OK Pressed") }],
+        { cancelable: false }
+      );
+    }
+  };
+
+  useEffect(() => {
+    gameOverMessage();
+  }, [isGameOver, score]);
 
   // console.log(JSON.stringify(snake, null, 0));
 

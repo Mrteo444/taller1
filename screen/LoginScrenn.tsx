@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet, Text, View, TextInput, Button ,Alert} from 'react-native'
+import { ImageBackground, StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import MenuScreen from './MenuScreen'
@@ -6,11 +6,10 @@ import MenuScreen from './MenuScreen'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../config/Config';
 
-export default function LoginScrenn({ navigation }: any) {
+export default function LoginScreen({ navigation }: any) {
 
-  const [correo, setcorreo] = useState('')
-  const [contrasenia, setcontrasenia] = useState('')
-
+  const [correo, setCorreo] = useState('')
+  const [contrasenia, setContrasenia] = useState('')
 
   function login() {
     signInWithEmailAndPassword(auth, correo, contrasenia)
@@ -28,44 +27,44 @@ export default function LoginScrenn({ navigation }: any) {
 
         switch (errorCode) {
           case "auth/invalid-credential":
-            Alert.alert("Error ","CORREO incorrectas")
+            Alert.alert("Error", "Correo incorrecto");
             break;
           case "auth/wrong-password":
-            Alert.alert("Error ","Contraseña perida")
+            Alert.alert("Error", "Contraseña incorrecta");
             break;
           default:
-            Alert.alert("ERROR")
+            Alert.alert("ERROR");
         }
       });
   }
+
   return (
     <ImageBackground
-
-      source={{ uri: 'https://i.pinimg.com/564x/86/f7/2f/86f72f87cbd7050cbad3816c0dfff54a.jpg' }}
+      source={{ uri: 'https://s0.smartresize.com/wallpaper/892/884/HD-wallpaper-minimal-blue-wallpappe-aurel-minimal-abstract-blue-dark-lines.jpg' }}
       style={styles.container}
     >
+            <Text style={[ { color: 'white' }]}>INICIAR SESION</Text>
       <TextInput
         style={styles.input}
         placeholder="Ingrese email"
         keyboardType='email-address'
-        onChangeText={(texto) => setcorreo(texto)}
+        onChangeText={(texto) => setCorreo(texto)}
+        placeholderTextColor="black" // Agregamos este estilo para el color del placeholder
       />
       <TextInput
         style={styles.input}
         placeholder="Contraseña"
-        onChangeText={(texto) => setcontrasenia(texto)}
+        onChangeText={(texto) => setContrasenia(texto)}
+        placeholderTextColor="black" // Agregamos este estilo para el color del placeholder
+        secureTextEntry={true} // Asumiendo que es una contraseña, ocultamos el texto
       />
-
 
       <TouchableOpacity style={styles.but} onPress={() => login()}>
         <Text style={{ color: 'white' }}>Entrar</Text>
       </TouchableOpacity>
 
-
     </ImageBackground>
-
-
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -76,21 +75,23 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    borderColor: 'black',
-    borderWidth: 3,
+    borderColor: 'white', // Cambiamos el color del borde
+    borderWidth: 2,
+    borderRadius: 20,
     marginBottom: 16,
     padding: 8,
-    width: '100%',
-    color: 'black'
+    width: '80%',
+    backgroundColor: 'white',
+    color: 'black', // Cambiamos el color del texto
   },
+
   but: {
     borderRadius: 50,
-    backgroundColor: 'red',
+    backgroundColor: '#086182',
     padding: 10,
     alignItems: 'center',
     justifyContent: 'center',
     width: '50%',
     marginBottom: 20
   }
-
-})
+});
