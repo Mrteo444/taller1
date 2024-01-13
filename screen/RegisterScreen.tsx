@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Image, Text, View, StyleSheet, TextInput, Button, ImageBackground, TouchableOpacity , Alert} from 'react-native'
+import { Image, Text, View, StyleSheet, TextInput, Button, ImageBackground, TouchableOpacity, Alert } from 'react-native'
 import * as ImagePicker from 'expo-image-picker';
 
 //FIREBASE
@@ -33,39 +33,31 @@ const RegisterScreen = ({ navigation }: any) => {
     const storageRef = ref(storage, 'usuarios/' + nombre);
 
     try {
-        const response = await fetch(imagen);
-        const blob = await response.blob();
+      const response = await fetch(imagen);
+      const blob = await response.blob();
 
-        await uploadBytes(storageRef, blob, {
-            contentType: 'image/jpg'
-        });
+      await uploadBytes(storageRef, blob, {
+        contentType: 'image/jpg'
+      });
 
-        console.log('La imagen se subió con éxito');
-        Alert.alert('Mensaje', 'Imagen subida con exito')
+      console.log('La imagen se subió con éxito');
+      Alert.alert('Mensaje', 'Imagen subida con exito')
 
-        // Obtiene la URL de la imagen
-        const imageURL = await getDownloadURL(storageRef);
-        console.log('URL de desacarga de la imagen', imageURL);
+      // Obtiene la URL de la imagen
+      const imageURL = await getDownloadURL(storageRef);
+      console.log('URL de desacarga de la imagen', imageURL);
 
     } catch (error) {
-        console.error(error);
+      console.error(error);
     }
-}
+  }
 
-
-
-
-
-
-  ////////////// subir imagen de galaria /// 
-
-
+  //subir imagen de galaria //
 
   const [imagen, setImagen] = useState(' ')
 
   //CARGAR IMAGEN
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -103,15 +95,7 @@ const RegisterScreen = ({ navigation }: any) => {
   }
 
 
-
-
-
-
-
-
   ///////////////////////////////////////////
-
-  
 
   const [correo, setcorreo] = useState('')
   const [contrasenia, setcontrasenia] = useState('')
@@ -119,16 +103,14 @@ const RegisterScreen = ({ navigation }: any) => {
   function registro() {
     createUserWithEmailAndPassword(auth, correo, contrasenia)
       .then((userCredential) => {
-        
+
         const user = userCredential.user;
         navigation.navigate('login')
         navigation.navigate('login')
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
         console.log(errorCode)
 
         switch (errorCode) {
@@ -181,6 +163,7 @@ const RegisterScreen = ({ navigation }: any) => {
         placeholder="Contraseña"
         onChangeText={(texto) => setcontrasenia(texto)}
       />
+<<<<<<< HEAD
       <Text style={{ color: 'white' }}>SUBIR FOTO DE PERFIL </Text>
       <TouchableOpacity style={styles.but2} onPress={() => pickImage()}>
         <Text style={{ color: 'white' }}>Abrir almacenamiento</Text>
@@ -197,6 +180,36 @@ const RegisterScreen = ({ navigation }: any) => {
 
       <TouchableOpacity style={styles.but2} onPress={() => subirImagenC('avatar2')}>
         <Text style={{ color: 'white' }}>Subir imagen</Text>
+=======
+
+      <Text>SUBIR FOTO DE PERFIL </Text>
+      
+      <TouchableOpacity style={styles.but2} onPress={() => pickImage()}>
+        <Text style={{ color: 'white' }}>Abrir almacenamiento</Text>
+      </TouchableOpacity>
+      {/* <Image source={{ uri: imagen }} style={styles.img} /> */}
+      <TouchableOpacity style={styles.but2} onPress={() => subirImagen('avatar1')}>
+        <Text style={{ color: 'white' }}>Gaurdar Imagen</Text>
+      </TouchableOpacity>
+
+      {/* ///////////////////////CAMARA ///////////////////////// */}
+      <Text>SUBIR IMAGEN DESDE LA CAMARA</Text>
+      <TouchableOpacity style={styles.but2} onPress={() => seleccionarImagen()}>
+        <Text style={{ color: 'white' }}>Open camara</Text>
+      </TouchableOpacity>
+
+      {/* <Image source ={{ uri: imagen}} style={styles.img}/> */}
+
+      <TouchableOpacity style={styles.but2} onPress={() => subirImagenC('avatar2')}>
+        <Text style={{ color: 'white' }}>SUBIR IMAGEN A FIREBASE</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.but} onPress={() => registro()}>
+        <Text style={{ color: 'white' }}>Registar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.but1} onPress={() => navigation.navigate('Login')}>
+        <Text style={{ color: 'white' }}>Inicio de sesion</Text>
+>>>>>>> 0ca8a1ed79c1ffc8cf34129b446ae91a5c4f3926
       </TouchableOpacity>
 
       <TouchableOpacity style={[styles.but, { color: 'white' }]} onPress={() => registro()}>
@@ -257,8 +270,8 @@ const styles = StyleSheet.create({
     height: 300,
     resizeMode: 'contain'
   },
-  
-  
+
+
 })
 
 export default RegisterScreen
