@@ -8,19 +8,16 @@ import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
 import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBWU_EQ1Dja9diuPCW41rAC8_5V6ilPJfg",
-  authDomain: "juego-6bb25.firebaseapp.com",
-  databaseURL: "https://juego-6bb25-default-rtdb.firebaseio.com",
-  projectId: "juego-6bb25",
-  storageBucket: "juego-6bb25.appspot.com",
-  messagingSenderId: "294989014319",
-  appId: "1:294989014319:web:1c0f3818836468ee99edda"
+  apiKey: "AIzaSyC9S1Hay79H991HyxhC3bLLzRwgPnhv3tE",
+  authDomain: "app-taller-1ca3e.firebaseapp.com",
+  projectId: "app-taller-1ca3e",
+  storageBucket: "app-taller-1ca3e.appspot.com",
+  messagingSenderId: "209052659517",
+  appId: "1:209052659517:web:2b2f727d02eba6f961df54"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-//export const auth = getAuth(app)
 export const db= getDatabase(app)
 
 export const auth = initializeAuth(app, {
