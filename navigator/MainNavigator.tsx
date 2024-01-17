@@ -23,7 +23,7 @@ function MyTabs() {
       <Tab.Screen name="Subir imagen" component={JuegoScreen} />
       <Tab.Screen name="Juego: Serpiente" component={Game} />
       <Tab.Screen name="Juego: Buscaminas" component={Board} />
-      <Tab.Screen name="welcome" component={welcome} />
+      <Tab.Screen name="inicio" component={welcome} />
       
     </Tab.Navigator>
   );

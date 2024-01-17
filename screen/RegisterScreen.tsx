@@ -64,6 +64,15 @@ const RegisterScreen = ({ navigation }: any) => {
     guardar(userId, correo, nickName, edad, contrasenia)
 
   }
+
+  function registro3() {
+   
+
+    navigation.navigate('Ingreso')
+
+   
+
+  }
   ////guaarar/// 
   function guardar(userId: string, correo: string, nickName: string, edad: string, contrasenia: string,) {
     set(ref(db, 'users/' + userId), {
@@ -124,6 +133,9 @@ const RegisterScreen = ({ navigation }: any) => {
       </TouchableOpacity>
 
 
+      
+
+
 
     </ImageBackground>
   )
@@ -161,6 +173,14 @@ const styles = StyleSheet.create({
   but2: {
 
     backgroundColor: '#286F93',
+    padding: 10,
+    borderRadius: 5,
+    width: '60%',
+    marginBottom: 10,
+  },
+  but3: {
+
+    backgroundColor: 'red',
     padding: 10,
     borderRadius: 5,
     width: '60%',

@@ -2,7 +2,7 @@ import { Button, StyleSheet, Text, View, Image, TouchableOpacity, Alert, ImageBa
 import React, { useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
-
+import { v4 as uuidv4 } from 'uuid';
 // FIREBASE
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../config/Config';
@@ -27,20 +27,22 @@ export default function JuegoScreen() {
   };
 
   ///SUBIR LA IMAGEN
-  async function subirImagen(nombre: string) {
-    const storageRef = ref(storage, 'usuarios/' + nombre);
-
+  async function subirImagen() {
+    const timestamp = new Date().getTime(); // Get the current timestamp
+    const uniqueName = `imagen_${timestamp}_${uuidv4()}.jpg`; // Generate a unique name
+    const storageRef = ref(storage, `usuarios/${uniqueName}`); // Use the unique name for the storage reference
+  
     try {
       const response = await fetch(imagen);
       const blob = await response.blob();
-
+  
       await uploadBytes(storageRef, blob, {
         contentType: 'image/jpg',
       });
-
+  
       console.log('La imagen se subió con éxito');
       Alert.alert('Mensaje', 'Imagen subida con éxito');
-
+  
       // Obtiene la URL de la imagen
       const imageURL = await getDownloadURL(storageRef);
       console.log('URL de descarga de la imagen', imageURL);
@@ -115,8 +117,11 @@ export default function JuegoScreen() {
       <TouchableOpacity style={styles.but2} onPress={() => seleccionarImagen()}>
         <Text style={{ color: 'white' }}>Abrir cámara</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.but2} onPress={() => pickImage()}>
+        <Text style={{ color: 'white' }}>Abrir galeria</Text>
+      </TouchableOpacity>
 
-      <TouchableOpacity style={styles.but2} onPress={() => subirImagenG('avatar2')}>
+      <TouchableOpacity style={styles.but2} onPress={() => subirImagenG('avatar1')}>
         <Text style={{ color: 'white' }}>Subir imagen</Text>
       </TouchableOpacity>
 
