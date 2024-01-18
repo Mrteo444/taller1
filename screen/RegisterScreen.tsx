@@ -1,42 +1,29 @@
 import React, { useState } from 'react'
 import { Image, Text, View, StyleSheet, TextInput, Button, ImageBackground, TouchableOpacity, Alert } from 'react-native'
-import * as ImagePicker from 'expo-image-picker';
-
-//FIREBASE
-import {  uploadBytes, getDownloadURL } from "firebase/storage";
+import { uploadBytes, getDownloadURL } from "firebase/storage";
 import { getDatabase, ref, set } from "firebase/database";
-import { storage } from '../config/Config';
 import { db } from '../config/Config';
-
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../config/Config';
 
-
-////////////////////////////////
-
-
-
-
-
 const RegisterScreen = ({ navigation }: any) => {
-  
-
+  const [nickName, setnickName] = useState('')
+  const [correo, setcorreo] = useState('')
+  const [contrasenia, setcontrasenia] = useState('')
+  const [edad, setedad] = useState('')
+  const [datos, setDatos] = useState([])
+  const [userId, setuserId] = useState('')
 
   function registro() {
     createUserWithEmailAndPassword(auth, correo, contrasenia)
       .then((userCredential) => {
-        // Signed up 
         const user = userCredential.user;
-
         console.log("REGISTRO CORRECTO");
         navigation.navigate('login')
-         console.log(user.uid);
-         guardar(userId, correo, nickName, edad, contrasenia)
-
-
+        console.log(user.uid);
+        guardar(userId, correo, nickName, edad, contrasenia)
         setuserId(user.uid)
         console.log(userId);
-        
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -47,33 +34,23 @@ const RegisterScreen = ({ navigation }: any) => {
           case 'auth/email-already-in-use':
             Alert.alert('Error', 'El correo ingresado ya esta en uso')
             break;
-
-          // Agregue más casos según sea necesario
-
           default:
             Alert.alert('Error', 'Se ha producido un error desconocido')
             break;
         }
       });
   }
+
   function registro2() {
     registro()
-
-    navigation.navigate('Ingreso')
-
     guardar(userId, correo, nickName, edad, contrasenia)
-
+    navigation.navigate('Ingreso')
   }
 
   function registro3() {
-   
-
     navigation.navigate('Ingreso')
-
-   
-
   }
-  ////guaarar/// 
+
   function guardar(userId: string, correo: string, nickName: string, edad: string, contrasenia: string,) {
     set(ref(db, 'users/' + userId), {
       nickName: nickName,
@@ -82,15 +59,6 @@ const RegisterScreen = ({ navigation }: any) => {
       contrasenia: contrasenia,
     });
   }
-  const [nickName, setnickName] = useState('')
-  const [correo, setcorreo] = useState('')
-  const [contrasenia, setcontrasenia] = useState('')
-  const [edad, setedad] = useState('')
-  const [datos, setDatos] = useState([])
-
-  const [userId, setuserId] = useState('')
-
-
 
   return (
     <ImageBackground
@@ -124,18 +92,13 @@ const RegisterScreen = ({ navigation }: any) => {
         placeholder="Contraseña"
         onChangeText={(texto) => setcontrasenia(texto)}
       />
-      
-      
 
-      
       <TouchableOpacity style={styles.but2} onPress={() => registro2()}>
         <Text style={{ color: 'white' }}>Registrarse</Text>
       </TouchableOpacity>
-
-
-      
-
-
+      <TouchableOpacity style={styles.but2} onPress={() => registro3()}>
+        <Text style={{ color: 'white' }}>Iniciar sesion</Text>
+      </TouchableOpacity>
 
     </ImageBackground>
   )
@@ -152,16 +115,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   input: {
-
     height: 40,
-    borderColor: 'white', // Cambiamos el color del borde
+    borderColor: 'white',
     borderWidth: 2,
     borderRadius: 20,
     marginBottom: 10,
     padding: 8,
     width: '80%',
     backgroundColor: 'white',
-    color: 'black', // Cambiamos el color del texto */
+    color: 'black',
   },
   but: {
     backgroundColor: 'blue',
@@ -171,7 +133,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   but2: {
-
     backgroundColor: '#286F93',
     padding: 10,
     borderRadius: 5,
@@ -179,7 +140,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   but3: {
-
     backgroundColor: 'red',
     padding: 10,
     borderRadius: 5,

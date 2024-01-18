@@ -1,8 +1,6 @@
 import { ImageBackground, StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import MenuScreen from './MenuScreen'
-
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../config/Config';
 
@@ -14,10 +12,8 @@ export default function LoginScreen({ navigation }: any) {
   function login() {
     signInWithEmailAndPassword(auth, correo, contrasenia)
       .then((userCredential) => {
-        // Signed in 
         const user = userCredential.user;
         navigation.navigate("Inicio")
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -33,7 +29,7 @@ export default function LoginScreen({ navigation }: any) {
             Alert.alert("Error", "Contraseña incorrecta");
             break;
           default:
-            Alert.alert("Error","Complete los espacios");
+            Alert.alert("Error", "Complete los espacios");
         }
       });
   }
@@ -41,22 +37,23 @@ export default function LoginScreen({ navigation }: any) {
   return (
     <ImageBackground
       source={{ uri: 'https://s0.smartresize.com/wallpaper/892/884/HD-wallpaper-minimal-blue-wallpappe-aurel-minimal-abstract-blue-dark-lines.jpg' }}
-      style={styles.container}
-    >
-            <Text style={[ { color: 'white' }]}>INICIAR SESION</Text>
+      style={styles.container}>
+
+      <Text style={[{ color: 'white' }]}>INICIAR SESION</Text>
+
       <TextInput
         style={styles.input}
         placeholder="Ingrese email"
         keyboardType='email-address'
         onChangeText={(texto) => setCorreo(texto)}
-        placeholderTextColor="black" // Agregamos este estilo para el color del placeholder
+        placeholderTextColor="black"
       />
       <TextInput
         style={styles.input}
         placeholder="Contraseña"
         onChangeText={(texto) => setContrasenia(texto)}
-        placeholderTextColor="black" // Agregamos este estilo para el color del placeholder
-        secureTextEntry={true} // Asumiendo que es una contraseña, ocultamos el texto
+        placeholderTextColor="black"
+        secureTextEntry={true}
       />
 
       <TouchableOpacity style={styles.but} onPress={() => login()}>
@@ -84,7 +81,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     color: 'black', // Cambiamos el color del texto
   },
-
   but: {
     borderRadius: 50,
     backgroundColor: '#086182',

@@ -8,7 +8,7 @@ import {  ref, onValue } from "firebase/database";
 
 
 export default function welcome( { navigation }: any) {
-    const [acceso, setAcceso] = useState('')
+  const [acceso, setAcceso] = useState('')
   const [id, setid] = useState('')
   const [usuario, setusuario] = useState('')
 
@@ -16,11 +16,9 @@ export default function welcome( { navigation }: any) {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-
         const uid = user.uid;
         console.log("Datos: ", uid)
         setid(uid)
-        // ...
       } else {
         setid('')
       }
@@ -34,20 +32,12 @@ export default function welcome( { navigation }: any) {
     });
   }, [])
 
-
-
-
-
   function observable() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
         setAcceso(uid)
-        // ...
       } else {
-        // User is signed out
         navigation.navigate("Login")
       }
     });
@@ -59,14 +49,10 @@ export default function welcome( { navigation }: any) {
     observable()
   }
 
-
-
   function logout() {
     signOut(auth).then(() => {
-      // Sign-out successful.
       navigation.navigate("Regístrate")
     }).catch((error) => {
-      // An error happened.
     });
   }
 
