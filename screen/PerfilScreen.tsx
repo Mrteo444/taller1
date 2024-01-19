@@ -4,12 +4,15 @@ import { db, auth } from '../config/Config'
 import { ref, onValue } from "firebase/database";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { TouchableOpacity } from 'react-native-gesture-handler';
-const SCORE_INCREMENT = 10;
-export default function PerfilScreen({ navigation }: any) {
+import Score from "../src/Components/Score";
 
+export default function PerfilScreen({ navigation }: any) {
+    const SCORE_INCREMENT = 10;
     const [acceso, setAcceso] = useState('')
     const [id, setid] = useState('')
     const [usuario, setusuario] = useState('')
+    const [score, setScore] = useState<number>(0);
+
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -68,11 +71,13 @@ export default function PerfilScreen({ navigation }: any) {
                 <Image
                     source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3736/3736502.png' }}
                     style={{ width: 100, height: 100, borderRadius: 50, overflow: 'hidden', marginTop: 0 }}
+                    
                 />
                 <View style={styles.overlay}>
                     <Text style={styles.texti}>Nickname: {usuario.nickName}</Text>
                     <Text style={styles.texti}>Edad: {usuario.edad}</Text>
                     <Text style={styles.texti}>Correo electrónico: {usuario.email}</Text>
+                    <Text style={styles.texti}>Puntaje obtenido: {score}</Text>
                 </View></View>
             <TouchableOpacity style={styles.but2} onPress={() => compuesta()}>
                 <Text style={styles.buttonText}>Salir</Text>
@@ -89,7 +94,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Añade un fondo oscuro semi-transparente
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
         padding: 20,
         borderRadius: 10,
         width: '80%',

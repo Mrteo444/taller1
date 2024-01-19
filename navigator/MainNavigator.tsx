@@ -15,11 +15,10 @@ const Stack = createStackNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="menu" component={welcome} />
       <Tab.Screen name="Subir imagen" component={JuegoScreen} />
       <Tab.Screen name="Juego: Serpiente" component={Game} />
       <Tab.Screen name="Juego: Buscaminas" component={Board} />
-      {/* <Tab.Screen name="Perfil" component={PerfilScreen} /> */}
+      <Tab.Screen name="Perfil" component={PerfilScreen} />
 
     </Tab.Navigator>
   );
@@ -43,3 +42,4 @@ export default function TopTabNavigator() {
     </NavigationContainer>
   )
 }
+
