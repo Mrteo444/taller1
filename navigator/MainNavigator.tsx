@@ -7,6 +7,7 @@ import RegisterScreen from '../screen/RegisterScreen';
 import Game from '../src/Components/Game';
 import Board from '../src1/components/Board';
 import PerfilScreen from '../screen/PerfilScreen';
+import welcome from '../screen/welcome';
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
@@ -14,11 +15,20 @@ const Stack = createStackNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator>
+<<<<<<< HEAD
       {/* <Tab.Screen name="menu" component={MenuScreen} /> */}
       <Tab.Screen name="Subir imagen" component={SubirImagen} />
       <Tab.Screen name="Juego: Serpiente" component={Game} />
       <Tab.Screen name="Juego: Buscaminas" component={Board} />
       <Tab.Screen name="Perfil" component={PerfilScreen} />
+=======
+      <Tab.Screen name="menu" component={welcome} />
+      <Tab.Screen name="Subir imagen" component={JuegoScreen} />
+      <Tab.Screen name="Juego: Serpiente" component={Game} />
+      <Tab.Screen name="Juego: Buscaminas" component={Board} />
+      {/* <Tab.Screen name="Perfil" component={PerfilScreen} /> */}
+
+>>>>>>> df5a6979bbe34868a956f692c921fdeb0c957167
     </Tab.Navigator>
   );
 }

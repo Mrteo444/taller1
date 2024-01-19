@@ -1,16 +1,23 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button , ImageBackground,TouchableOpacity,} from 'react-native'
 import React, { useEffect, useState } from 'react'
 
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../config/Config';
 import { db } from '../config/Config';
+<<<<<<< HEAD
 import { ref, onValue } from "firebase/database";
 
+=======
+import {  ref, onValue } from "firebase/database";
+import Score from "../src/Components/Score";
+import Header from "../src/Components/Header";
+>>>>>>> df5a6979bbe34868a956f692c921fdeb0c957167
 
 export default function welcome({ navigation }: any) {
   const [acceso, setAcceso] = useState('')
   const [id, setid] = useState('')
   const [usuario, setusuario] = useState('')
+  const [score, setScore] = useState<number>(0);
 
 
   useEffect(() => {
@@ -57,7 +64,14 @@ export default function welcome({ navigation }: any) {
   }
 
   return (
+    <ImageBackground
+            source={{ uri: 'https://s0.smartresize.com/wallpaper/892/884/HD-wallpaper-minimal-blue-wallpappe-aurel-minimal-abstract-blue-dark-lines.jpg' }}
+            style={styles.container}
+        >
+          <Text style={[styles.titulo, { color: 'white' }]}>Ususario</Text>
+
     <View>
+<<<<<<< HEAD
       <Text >{usuario.nickName}</Text>
       <Text >{usuario.edad}</Text>
       <Text >{usuario.email}</Text>
@@ -66,7 +80,54 @@ export default function welcome({ navigation }: any) {
 
       <Button title="logout" onPress={() => compuesta()} />
     </View>
+=======
+    <Text >Name  : {usuario.nickName}</Text>
+    <Text >Edad  : {usuario.edad}</Text>
+    <Text >Correo: {usuario.email}</Text>
+    
+    {/* <Text >Score({ score })</Text> */}
+    
+          <Score score={score} />
+        
+
+
+    {/* <Button title="logout" onPress={() => compuesta()} /> */}
+
+
+    <TouchableOpacity style={styles.but2} onPress={() => compuesta()} >
+        <Text style={{ color: 'white' }}>logout</Text>
+      </TouchableOpacity>
+
+
+  </View>
+  </ImageBackground>
+>>>>>>> df5a6979bbe34868a956f692c921fdeb0c957167
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+},
+container1: {
+    borderWidth: 1,
+    width: "100%",
+    marginTop: 10
+},
+texti: {
+    color: '#fff'
+},
+but2: {
+    backgroundColor: '#286F93',
+    padding: 10,
+    borderRadius: 5,
+    width: '60%',
+    marginBottom: 10,
+},
+titulo: {
+  fontSize: 28,
+  marginBottom: 10,
+},
+})

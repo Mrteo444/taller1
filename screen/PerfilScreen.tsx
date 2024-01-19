@@ -4,7 +4,7 @@ import { db, auth } from '../config/Config'
 import { ref, onValue } from "firebase/database";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+const SCORE_INCREMENT = 10;
 export default function PerfilScreen({ navigation }: any) {
 
     const [acceso, setAcceso] = useState('')
@@ -53,6 +53,8 @@ export default function PerfilScreen({ navigation }: any) {
             console.error("Error al cerrar sesión", error);
         });
     }
+    ////////////////
+    
 
     return (
         <ImageBackground
