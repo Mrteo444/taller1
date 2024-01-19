@@ -63,11 +63,12 @@ export default function welcome( { navigation }: any) {
             source={{ uri: 'https://s0.smartresize.com/wallpaper/892/884/HD-wallpaper-minimal-blue-wallpappe-aurel-minimal-abstract-blue-dark-lines.jpg' }}
             style={styles.container}
         >
+          <Text style={[styles.titulo, { color: 'white' }]}>Ususario</Text>
 
     <View>
-    <Text >{usuario.nickName}</Text>
-    <Text >{usuario.edad}</Text>
-    <Text >{usuario.email}</Text>
+    <Text >Name  : {usuario.nickName}</Text>
+    <Text >Edad  : {usuario.edad}</Text>
+    <Text >Correo: {usuario.email}</Text>
     
     {/* <Text >Score({ score })</Text> */}
     
@@ -108,5 +109,9 @@ but2: {
     borderRadius: 5,
     width: '60%',
     marginBottom: 10,
+},
+titulo: {
+  fontSize: 28,
+  marginBottom: 10,
 },
 })
