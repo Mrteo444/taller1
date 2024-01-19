@@ -4,16 +4,11 @@ import React, { useEffect, useState } from 'react'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../config/Config';
 import { db } from '../config/Config';
-<<<<<<< HEAD
-import { ref, onValue } from "firebase/database";
-
-=======
 import {  ref, onValue } from "firebase/database";
 import Score from "../src/Components/Score";
 import Header from "../src/Components/Header";
->>>>>>> df5a6979bbe34868a956f692c921fdeb0c957167
 
-export default function welcome({ navigation }: any) {
+export default function welcome( { navigation }: any) {
   const [acceso, setAcceso] = useState('')
   const [id, setid] = useState('')
   const [usuario, setusuario] = useState('')
@@ -31,11 +26,11 @@ export default function welcome({ navigation }: any) {
       }
     });
 
-    const starCountRef = ref(db, 'users/' + id);
+    const starCountRef = ref(db, 'users/' + id );
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      console.log("USUARIO", data)
-      setusuario(data)
+      console.log("USUARIO", data) 
+      setusuario(data) 
     });
   }, [])
 
@@ -71,16 +66,6 @@ export default function welcome({ navigation }: any) {
           <Text style={[styles.titulo, { color: 'white' }]}>Ususario</Text>
 
     <View>
-<<<<<<< HEAD
-      <Text >{usuario.nickName}</Text>
-      <Text >{usuario.edad}</Text>
-      <Text >{usuario.email}</Text>
-      {/* <Text >Score({ score })</Text> */}
-
-
-      <Button title="logout" onPress={() => compuesta()} />
-    </View>
-=======
     <Text >Name  : {usuario.nickName}</Text>
     <Text >Edad  : {usuario.edad}</Text>
     <Text >Correo: {usuario.email}</Text>
@@ -101,7 +86,6 @@ export default function welcome({ navigation }: any) {
 
   </View>
   </ImageBackground>
->>>>>>> df5a6979bbe34868a956f692c921fdeb0c957167
   )
 }
 
