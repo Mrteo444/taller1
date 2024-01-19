@@ -2,18 +2,17 @@ import { Button, StyleSheet, Text, View, Image, TouchableOpacity, Alert, ImageBa
 import React, { useState } from 'react';
 
 import * as ImagePicker from 'expo-image-picker';
-import { v4 as uuidv4 } from 'uuid';
 // FIREBASE
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../config/Config';
 
 export default function JuegoScreen() {
-  const [imagen, setImagen] = useState(
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1656px-User_icon-cp.svg.png'
-  );
+  // const [imagen, setImagen] = useState(
+  //   'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1656px-User_icon-cp.svg.png'
+  // );
 
-  // ABRIR LA CAMARA
   const seleccionarImagen = async () => {
+    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -21,31 +20,32 @@ export default function JuegoScreen() {
       quality: 1,
     });
 
+    console.log(result);
+
     if (!result.canceled) {
       setImagen(result.assets[0].uri);
     }
   };
 
   ///SUBIR LA IMAGEN
-  async function subirImagen() {
-    const timestamp = new Date().getTime(); // Get the current timestamp
-    const uniqueName = `imagen_${timestamp}_${uuidv4()}.jpg`; // Generate a unique name
-    const storageRef = ref(storage, `usuarios/${uniqueName}`); // Use the unique name for the storage reference
-  
+  async function subirImagenC(nombre: string) {
+    const storageRef = ref(storage, 'usuarios/' + nombre);
+
     try {
       const response = await fetch(imagen);
       const blob = await response.blob();
-  
+
       await uploadBytes(storageRef, blob, {
-        contentType: 'image/jpg',
+        contentType: 'image/jpg'
       });
-  
+
       console.log('La imagen se subió con éxito');
-      Alert.alert('Mensaje', 'Imagen subida con éxito');
-  
+      Alert.alert('Mensaje', 'Imagen subida con exito')
+
       // Obtiene la URL de la imagen
       const imageURL = await getDownloadURL(storageRef);
-      console.log('URL de descarga de la imagen', imageURL);
+      console.log('URL de desacarga de la imagen', imageURL);
+
     } catch (error) {
       console.error(error);
     }
@@ -53,7 +53,7 @@ export default function JuegoScreen() {
 
   //subir imagen de galaria //
 
-  
+  const [imagen, setImagen] = useState(' ')
 
   //CARGAR IMAGEN
   const pickImage = async () => {
@@ -99,7 +99,6 @@ export default function JuegoScreen() {
 
 
 
-
   return (
     <ImageBackground
       source={{ uri: 'https://wallpapers.com/images/hd/black-and-teal-vqtcoyaqv2mtuxrt.jpg' }}
@@ -110,18 +109,18 @@ export default function JuegoScreen() {
       <Button title="abrir camara" onPress={() => seleccionarImagen()} />
       <Image source={{ uri: imagen }} style={styles.img} />
   
-      <TouchableOpacity style={styles.btn} onPress={() => subirImagen('avatar2')}>
+      <TouchableOpacity style={styles.btn} onPress={() => subirImagenC('avatar1')}>
         <Text >Guardar la imagen en firebase</Text>
       </TouchableOpacity>
-      <Text style={{ color: 'white' }}>SUBIR IMAGEN DESDE LA CÁMARA</Text>
-      <TouchableOpacity style={styles.but2} onPress={() => seleccionarImagen()}>
+      {/* <Text style={{ color: 'white' }}>SUBIR IMAGEN DESDE LA CÁMARA</Text> */}
+      {/* <TouchableOpacity style={styles.but2} onPress={() => seleccionarImagen()}>
         <Text style={{ color: 'white' }}>Abrir cámara</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity style={styles.but2} onPress={() => pickImage()}>
         <Text style={{ color: 'white' }}>Abrir galeria</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.but2} onPress={() => subirImagenG('avatar1')}>
+      <TouchableOpacity style={styles.but2} onPress={() => subirImagenG('avatar2')}>
         <Text style={{ color: 'white' }}>Subir imagen</Text>
       </TouchableOpacity>
 
