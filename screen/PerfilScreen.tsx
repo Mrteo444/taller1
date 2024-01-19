@@ -1,4 +1,4 @@
-import { Button, ImageBackground, StyleSheet, Text, View } from 'react-native'
+import { Button, ImageBackground, StyleSheet, Text, View, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { db, auth } from '../config/Config'
 import { ref, onValue } from "firebase/database";
@@ -56,22 +56,29 @@ export default function PerfilScreen({ navigation }: any) {
 
     return (
         <ImageBackground
-            source={{ uri: 'https://s0.smartresize.com/wallpaper/892/884/HD-wallpaper-minimal-blue-wallpappe-aurel-minimal-abstract-blue-dark-lines.jpg' }}
+            source={{
+                uri:
+                    'https://img2.wallspic.com/crops/7/3/4/7/6/167437/167437-ambiente-pendiente-material_propiedad-tintes_y_matices-patron-1536x3073.jpg',
+            }}
             style={styles.container}
         >
-            <View>
-                <Text style={styles.texti}>{usuario.nickName}</Text>
-                <Text style={styles.texti}>{usuario.edad}</Text>
-                <Text style={styles.texti}>{usuario.email}</Text>
-                {/* <Text >Score({ score })</Text> */}
+            <View style={styles.overlay}>
+                <Image
+                    source={{ uri: 'https://cdn-icons-png.flaticon.com/512/3736/3736502.png' }}
+                    style={{ width: 100, height: 100, borderRadius: 50, overflow: 'hidden', marginTop: 0 }}
+                />
+                <View style={styles.overlay}>
+                    <Text style={styles.texti}>Nickname: {usuario.nickName}</Text>
+                    <Text style={styles.texti}>Edad: {usuario.edad}</Text>
+                    <Text style={styles.texti}>Correo electrónico: {usuario.email}</Text>
+                </View></View>
+            <TouchableOpacity style={styles.but2} onPress={() => compuesta()}>
+                <Text style={styles.buttonText}>Salir</Text>
+            </TouchableOpacity>
 
-                <TouchableOpacity style={styles.but2} onPress={() => compuesta()}>
-                    <Text style={{ color: 'white' }}> Salir </Text>
-                </TouchableOpacity>
-            </View>
         </ImageBackground>
     )
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -79,19 +86,29 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    container1: {
-        borderWidth: 1,
-        width: "100%",
-        marginTop: 10
+    overlay: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Añade un fondo oscuro semi-transparente
+        padding: 20,
+        borderRadius: 10,
+        width: '80%',
+        alignItems: 'center',
     },
+    
     texti: {
-        color: '#fff'
+        color: '#fff',
+        marginBottom: 10,
+        fontSize: 18,
     },
     but2: {
         backgroundColor: '#286F93',
-        padding: 10,
-        borderRadius: 5,
-        width: '60%',
-        marginBottom: 10,
+        padding: 15,
+        borderRadius: 8,
+        width: '100%',
+        marginTop: 10,
+        alignItems: 'center',
     },
-})
+    buttonText: {
+        color: 'white',
+        fontSize: 16,
+    },
+});

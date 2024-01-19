@@ -4,10 +4,10 @@ import React, { useEffect, useState } from 'react'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from '../config/Config';
 import { db } from '../config/Config';
-import {  ref, onValue } from "firebase/database";
+import { ref, onValue } from "firebase/database";
 
 
-export default function welcome( { navigation }: any) {
+export default function welcome({ navigation }: any) {
   const [acceso, setAcceso] = useState('')
   const [id, setid] = useState('')
   const [usuario, setusuario] = useState('')
@@ -24,11 +24,11 @@ export default function welcome( { navigation }: any) {
       }
     });
 
-    const starCountRef = ref(db, 'users/' + id );
+    const starCountRef = ref(db, 'users/' + id);
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      console.log("USUARIO", data) 
-      setusuario(data) 
+      console.log("USUARIO", data)
+      setusuario(data)
     });
   }, [])
 
@@ -58,14 +58,14 @@ export default function welcome( { navigation }: any) {
 
   return (
     <View>
-    <Text >{usuario.nickName}</Text>
-    <Text >{usuario.edad}</Text>
-    <Text >{usuario.email}</Text>
-    {/* <Text >Score({ score })</Text> */}
+      <Text >{usuario.nickName}</Text>
+      <Text >{usuario.edad}</Text>
+      <Text >{usuario.email}</Text>
+      {/* <Text >Score({ score })</Text> */}
 
 
-    <Button title="logout" onPress={() => compuesta()} />
-  </View>
+      <Button title="logout" onPress={() => compuesta()} />
+    </View>
   )
 }
 

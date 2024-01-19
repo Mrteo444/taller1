@@ -35,7 +35,7 @@ const RegisterScreen = ({ navigation }: any) => {
             Alert.alert('Error', 'El correo ingresado ya esta en uso')
             break;
           default:
-            Alert.alert('Error', 'Se ha producido un error desconocido')
+            Alert.alert('Error', 'No se ha registrado correctamente')
             break;
         }
       });
@@ -65,40 +65,45 @@ const RegisterScreen = ({ navigation }: any) => {
       source={{ uri: 'https://s0.smartresize.com/wallpaper/892/884/HD-wallpaper-minimal-blue-wallpappe-aurel-minimal-abstract-blue-dark-lines.jpg' }}
       style={styles.container}
     >
-      <Text style={[styles.titulo, { color: 'white' }]}>REGISTRO</Text>
-      <Image
-        source={{ uri: 'https://img.freepik.com/fotos-premium/personaje-dibujos-animados-auriculares-gafas-que-dice-soy-robot_784625-10668.jpg?w=360' }}
-        style={{ width: 100, height: 100, marginTop: 0 }}
-      />
+      <View style={styles.overlay}>
+        <Text style={[styles.titulo, { color: 'white', fontFamily: 'monospace', fontWeight: 'bold', textShadowColor: 'rgba(0, 0, 0, 0.75)', textShadowOffset: { width: -1, height: 1 }, textShadowRadius: 10 }]}>
+          BIENVENIDO
+        </Text>
 
-      <TextInput
-        style={[styles.input, { color: 'black' }]}
-        placeholder="Nickname"
-        onChangeText={(texto) => setnickName(texto)}
-      />
+        <Image
+          source={{ uri: 'https://img.freepik.com/fotos-premium/personaje-dibujos-animados-auriculares-gafas-que-dice-soy-robot_784625-10668.jpg?w=360' }}
+          style={{ width: 100, height: 100, marginTop: 0 }}
+        />
 
-      <TextInput
-        style={[styles.input, { color: 'black' }]}
-        placeholder="Edad"
-        onChangeText={(texto) => setedad(texto)}
-      />
-      <TextInput
-        style={[styles.input, { color: 'black' }]}
-        placeholder="Correo electrónico"
-        onChangeText={(texto) => setcorreo(texto)}
-      />
-      <TextInput
-        style={[styles.input, { color: 'black' }]}
-        placeholder="Contraseña"
-        onChangeText={(texto) => setcontrasenia(texto)}
-      />
+        <TextInput
+          style={[styles.input, { color: 'black' }]}
+          placeholder="Nickname"
+          onChangeText={(texto) => setnickName(texto)}
+        />
 
-      <TouchableOpacity style={styles.but2} onPress={() => registro2()}>
-        <Text style={{ color: 'white' }}>Registrarse</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.but2} onPress={() => registro3()}>
-        <Text style={{ color: 'white' }}>Iniciar sesion</Text>
-      </TouchableOpacity>
+        <TextInput
+          style={[styles.input, { color: 'black' }]}
+          placeholder="Edad"
+          onChangeText={(texto) => setedad(texto)}
+        />
+        <TextInput
+          style={[styles.input, { color: 'black' }]}
+          placeholder="Correo electrónico"
+          onChangeText={(texto) => setcorreo(texto)}
+        />
+        <TextInput
+          style={[styles.input, { color: 'black' }]}
+          placeholder="Contraseña"
+          onChangeText={(texto) => setcontrasenia(texto)}
+        />
+
+        <TouchableOpacity style={styles.but2} onPress={() => registro2()}>
+          <Text style={{ color: 'white' }}>Regístrarse</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.but2} onPress={() => registro3()}>
+          <Text style={{ color: 'white' }}>Iniciar sesión</Text>
+        </TouchableOpacity>
+      </View>
 
     </ImageBackground>
   )
@@ -113,6 +118,13 @@ const styles = StyleSheet.create({
   titulo: {
     fontSize: 28,
     marginBottom: 10,
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Añade un fondo oscuro semi-transparente
+    padding: 20,
+    borderRadius: 10,
+    width: '80%',
+    alignItems: 'center',
   },
   input: {
     height: 40,
